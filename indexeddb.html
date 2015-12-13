@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Indexeddb</title>
+</head>
+<body>
+<script>
+	var db;
+	var request = window.indexedDB.open("Mydb", 9);
+	request.onsuccess = function(event) {
+		db = event.target.result;
+		var transaction = db.transaction(["customers"], "readwrite");
+		var objectStore = transaction.objectStore("customers");
+		var request = objectStore.add({email: "contato@jeancarlomachado.com", name: "Gandalf"});
+		request.onsuccess = function(event) {
+			console.log('added customer')
+		};
+	}
+	
+
+		db.transaction("customers").objectStore("customers").get("contato@jeancarlomachado.com").onsuccess = function(event) {
+			var data = event.target.result;
+			data.newAttr = 'aaaa';
+			var transaction = db.transaction(["customers"], "readwrite");
+			var requestUpdate = transaction.objectStore("customers").put(data);
+			requestUpdate.onerror = function(event) {
+				// Do something with the error
+			};
+			requestUpdate.onsuccess = function(event) {
+				db.transaction("customers").objectStore("customers").get("contato@jeancarlomachado.com").onsuccess = function(event) {
+					console.log("UPDATED ENTITY: " + event.target.result.newAttr);
+				};
+			};
+
+		};
+
+	request.onerror = function(event) {
+	  console.log("Database error: " + event.target.errorCode);
+	};
+
+
+		var request = db.transaction(["customers"], "readwrite")
+					.objectStore("customers")
+					.delete("contato@jeancarlomachado.com.br");
+		request.onsuccess = function(event) {
+			console.log('removed');
+		};
+
+
+	};
+
+	request.onupgradeneeded = function(event) {
+		console.log('upgrade running')
+		var db = event.target.result;
+		var objectStore = db.createObjectStore("customers", { keyPath: "email" });
+		objectStore.createIndex("email", "email", { unique: true });
+		objectStore.createIndex("name", "name", { unique: false});
+	};
+
+	//console.log('end');
+
+</script>
+</body>
+</html>
+
