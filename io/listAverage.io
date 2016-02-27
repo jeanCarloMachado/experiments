@@ -20,7 +20,7 @@ list(3, 2, 0) myAverage shouldEqual(0)
 
 e := try (
 list("foo") myAverage 
-) 
+)
 
 e catch (Exception,
   e error shouldEqual("To get the average you must pass an number")

@@ -62,3 +62,10 @@ foo get(2, 3) shouldEqual(0)
 
 bar := foo transpose
 (bar get(3, 5)) shouldEqual(foo get(5, 3))
+
+
+file := File clone openForUpdating("/tmp/test")
+file write(foo internalList serialized)
+file close
+
+
