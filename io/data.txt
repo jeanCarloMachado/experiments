@@ -1,0 +1,4 @@
+[
+    campo => "campo1",
+    depende => "campo2"
+]
