@@ -1,4 +1,4 @@
-module Main where
+module Test where
         
-    double :: Integer -> Integer
+    double :: Int -> Int
     double x = x + x
