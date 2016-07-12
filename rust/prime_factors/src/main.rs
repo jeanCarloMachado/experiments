@@ -13,6 +13,11 @@ fn prime_factors(mut num: i64) -> Vec<i64> {
 }
 
 #[test]
+fn prime_factors_of_48() {
+    assert_eq!(prime_factors(48), [2, 2, 2, 2, 3]);
+}
+
+#[test]
 fn prime_factors_of_two() {
     assert_eq!(prime_factors(2), [2]);
 }
@@ -37,10 +42,6 @@ fn prime_factors_of_nine() {
     assert_eq!(prime_factors(9), [3, 3]);
 }
 
-#[test]
-fn prime_factors_of_48() {
-    assert_eq!(prime_factors(48), [2, 2, 2, 2, 3]);
-}
 
 #[test]
 fn prime_factors_of_101() {

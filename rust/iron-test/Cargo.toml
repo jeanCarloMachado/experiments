@@ -1,0 +1,10 @@
+[package]
+name = "iron-test"
+version = "0.1.0"
+authors = ["Jean Carlo Machado <contato@jeancarlomachado.com.br>"]
+
+[dependencies]
+time = "0.1"
+
+[dependencies.iron]
+version = "*"

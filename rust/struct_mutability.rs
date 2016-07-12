@@ -10,7 +10,6 @@ struct PointRef<'a> {
 
 fn main() {
     let mut point = Point { x: 0, y: 0};
-
     {
         let r = PointRef { x: &mut point.x, y: &mut point.y }; 
 
