@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define DIMENSIONS 2
 
@@ -11,7 +12,7 @@ int main(int argc, char* argv[]) {
     double positions[DIMENSIONS];
 
     for(int i = 0; i < DIMENSIONS ; i++) {
-        positions[i] = atof(argv[i]);
+        positions[i] = atof(argv[i + 1]);
     }
 
     result = sphere(positions, 1);
@@ -25,7 +26,7 @@ double sphere(double x[], int d)
     double total = 0;
 
     for (int i = 0; i < DIMENSIONS; i++) {
-        total+= x[i] * x[i];
+        total+= pow(x[i], 2);
     }
 
     return total;
