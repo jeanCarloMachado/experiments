@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+float celcius_to_farenheit(float);
+
 int main()
 {
     float celcius, fahrenheit;
@@ -13,10 +15,15 @@ int main()
     celcius = lower;
 
     while (celcius <= top) {
-        fahrenheit = (9.0/5)*(celcius) + 32;
+        fahrenheit =  celcius_to_farenheit(celcius);
         printf("%f\t%f\n", celcius, fahrenheit);
         celcius+=step;
     }
 
     return 0;
+}
+
+float celcius_to_farenheit(float celcius)
+{
+    return (9.0/5)*(celcius) + 32;
 }
