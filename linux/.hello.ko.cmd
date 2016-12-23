@@ -1,0 +1,1 @@
+cmd_/home/jean/projects/experiments/linux/hello.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/jean/projects/experiments/linux/hello.ko /home/jean/projects/experiments/linux/hello.o /home/jean/projects/experiments/linux/hello.mod.o
