@@ -1,6 +1,5 @@
 #include <stdlib.h>
 
-
 typedef struct {
     uint foo
 } MyType;
