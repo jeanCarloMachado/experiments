@@ -1,0 +1,168 @@
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$h1,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Available Key Commands:'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$ul,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$li,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('Save: Ctrl+s'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$li,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('Select All: Ctrl+a'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$li,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Random Thing: Ctrl+Alt+e'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$strong,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('Current command: '),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$span,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(model.content),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'Save':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{content: 'Saved'}),
+					{ctor: '[]'});
+			case 'SelectAll':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{content: 'Select All'}),
+					{ctor: '[]'});
+			case 'RandomThing':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{content: 'Random Thing'}),
+					{ctor: '[]'});
+			default:
+				var _p1 = A2(_scottcorgan$keyboard_combo$Keyboard_Combo$update, _p0._0, model.combos);
+				var updatedKeys = _p1._0;
+				var comboCmd = _p1._1;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{combos: updatedKeys}),
+					_1: comboCmd
+				};
+		}
+	});
+var _user$project$Main$subscriptions = function (model) {
+	return _scottcorgan$keyboard_combo$Keyboard_Combo$subscriptions(model.combos);
+};
+var _user$project$Main$Model = F2(
+	function (a, b) {
+		return {combos: a, content: b};
+	});
+var _user$project$Main$ComboMsg = function (a) {
+	return {ctor: 'ComboMsg', _0: a};
+};
+var _user$project$Main$RandomThing = {ctor: 'RandomThing'};
+var _user$project$Main$SelectAll = {ctor: 'SelectAll'};
+var _user$project$Main$Save = {ctor: 'Save'};
+var _user$project$Main$keyboardCombos = {
+	ctor: '::',
+	_0: A2(
+		_scottcorgan$keyboard_combo$Keyboard_Combo$combo2,
+		{ctor: '_Tuple2', _0: _scottcorgan$keyboard_combo$Keyboard_Combo$control, _1: _scottcorgan$keyboard_combo$Keyboard_Combo$s},
+		_user$project$Main$Save),
+	_1: {
+		ctor: '::',
+		_0: A2(
+			_scottcorgan$keyboard_combo$Keyboard_Combo$combo2,
+			{ctor: '_Tuple2', _0: _scottcorgan$keyboard_combo$Keyboard_Combo$control, _1: _scottcorgan$keyboard_combo$Keyboard_Combo$a},
+			_user$project$Main$SelectAll),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_scottcorgan$keyboard_combo$Keyboard_Combo$combo3,
+				{ctor: '_Tuple3', _0: _scottcorgan$keyboard_combo$Keyboard_Combo$control, _1: _scottcorgan$keyboard_combo$Keyboard_Combo$alt, _2: _scottcorgan$keyboard_combo$Keyboard_Combo$e},
+				_user$project$Main$RandomThing),
+			_1: {ctor: '[]'}
+		}
+	}
+};
+var _user$project$Main$init = A2(
+	_elm_lang$core$Platform_Cmd_ops['!'],
+	{
+		combos: A2(_scottcorgan$keyboard_combo$Keyboard_Combo$init, _user$project$Main$keyboardCombos, _user$project$Main$ComboMsg),
+		content: 'No combo yet'
+	},
+	{ctor: '[]'});
+var _user$project$Main$main = _elm_lang$html$Html$program(
+	{subscriptions: _user$project$Main$subscriptions, init: _user$project$Main$init, update: _user$project$Main$update, view: _user$project$Main$view})();
