@@ -21,7 +21,9 @@ description:         Please see the README on GitHub at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- monad-logger >= 0.3.0 && < 0.4.0
 - scotty
+- wai-middleware-static
 
 library:
   source-dirs: src
