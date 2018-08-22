@@ -9,6 +9,5 @@ object HelloWorld {
   }
 
 
-  def getFoo(data:((Int, Int), (Int,Int)) ) : Unit {
-  }
+  def getFoo(data:((Int, Int), (Int,Int)) ) : Unit { }
 }
