@@ -4,9 +4,10 @@ object HelloWorld {
     val foo: (Option[String], Option[String]) = (None,  Some("def"));
 
     val data = ((1,2), (3,4))
-    val result = getFoo(data)
+    2 3result = getFoo(data)
     println(result)
   }
+
 
 
   def getFoo(data:((Int, Int), (Int,Int)) ) : Unit { }
